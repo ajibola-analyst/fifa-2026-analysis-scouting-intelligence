@@ -11,7 +11,7 @@
 
 This is an interactive dashboard that takes **54,600 match-level performance records** covering **1,248 players across 48 national teams** in a FIFA World Cup 2026 dataset, and turns them into something a football fan with zero data background can actually read at a glance: who's scoring, who's creating chances, who's doing the unglamorous defensive work, and how any two players stack up against each other.
 
-**[Try the live app →](#)** *https://your-app-name.streamlit.app/*
+**[Try the live app →](#)** *https://fifa-2026-analysis-scouting-intelligence.streamlit.app/*
 
 ---
 
@@ -170,7 +170,7 @@ This is a **synthetic, generated dataset** (sourced from Kaggle), not official F
 
 ## Author
 
-**Your Name**
+**Ajibola Odeyemi**
 *Data Analytics & Visualization*
 
 Built to demonstrate an end-to-end workflow: raw, unlabeled match data in, a decision-ready, plain-English dashboard out — the same shape of work involved in most analytics roles, just on a public dataset instead of a company's internal one.
