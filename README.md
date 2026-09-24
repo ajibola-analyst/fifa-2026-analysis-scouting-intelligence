@@ -171,6 +171,6 @@ This is a **synthetic, generated dataset** (sourced from Kaggle), not official F
 ## Author
 
 **Ajibola Odeyemi**
-*Data Analytics & Visualization*
+*- Specialist in Quantitative & Qualitative Analytics*
 
 Built to demonstrate an end-to-end workflow: raw, unlabeled match data in, a decision-ready, plain-English dashboard out — the same shape of work involved in most analytics roles, just on a public dataset instead of a company's internal one.
