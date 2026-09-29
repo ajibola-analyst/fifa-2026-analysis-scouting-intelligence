@@ -178,4 +178,4 @@ if __name__ == "__main__":
     print(players[["player_name", "team", "position", "goals", "goals_per_90",
                     "player_rating", "scouting_score"]].sort_values(
                         "scouting_score", ascending=False).head(10).to_string(index=False))
-    print("\n✅ Pipeline check passed — no errors, no NaNs, one row per player.")
+    print("\n Pipeline check passed — no errors, no NaNs, one row per player.")
