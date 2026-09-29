@@ -10,21 +10,14 @@ import plotly.graph_objects as go
 
 from data_pipeline import load_and_preprocess_data
 
-# ----------------------------------------------------------------------
-# PAGE CONFIG -- must be the first Streamlit call
-# ----------------------------------------------------------------------
+
+
 st.set_page_config(
     page_title="FIFA World Cup 2026 - Player Analytics",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
-# ----------------------------------------------------------------------
-# DESIGN SYSTEM
-# A cool, light "stadium chalk" background -- pale sage-grey, not the
-# cream/gold combination used before, and nothing dark. Position colors
-# are warm and saturated so they read clearly against the cool backdrop.
-# ----------------------------------------------------------------------
 BG = "#EAF1F6"
 CARD_BG = "#FFFFFF"
 INK = "#1C2622"
@@ -177,9 +170,7 @@ def position_legend():
     )
 
 
-# ----------------------------------------------------------------------
-# DATA (cached so it only loads/aggregates once per session)
-# ----------------------------------------------------------------------
+
 @st.cache_data
 def get_data():
     return load_and_preprocess_data("data/fifa_world_cup_2026_player_performance.csv")
@@ -188,9 +179,9 @@ df_raw, df_players, df_teams = get_data()
 TEAMS = sorted(df_players["team"].unique())
 POSITIONS = sorted(df_players["position"].unique())
 
-# ----------------------------------------------------------------------
+
 # SIDEBAR NAVIGATION
-# ----------------------------------------------------------------------
+
 st.sidebar.markdown("### FIFA World Cup 2026")
 st.sidebar.caption("Player Performance & Scouting Dashboard")
 page = st.sidebar.radio(
@@ -228,9 +219,8 @@ if d.empty:
     st.warning("No players match your current filters. Try widening them in the sidebar.")
     st.stop()
 
-# ----------------------------------------------------------------------
 # PAGE: TOURNAMENT OVERVIEW
-# ----------------------------------------------------------------------
+
 if page == "Tournament Overview":
     st.markdown(f"""
     <div class="headline-banner">
@@ -286,9 +276,9 @@ if page == "Tournament Overview":
         insight(f"<b>{top_pos['position']}s</b> have scored the most goals overall ({int(top_pos['goals'])}) -- "
                 f"consistent with how real football works, which is a good sign this dataset behaves sensibly.")
 
-# ----------------------------------------------------------------------
+
 # PAGE: ATTACKING ANALYSIS
-# ----------------------------------------------------------------------
+
 elif page == "Attacking Analysis":
     st.markdown("## Attacking Analysis")
     st.caption("Who finishes clinically, and who creates the most danger -- explained without jargon.")
@@ -344,9 +334,9 @@ elif page == "Attacking Analysis":
             insight(f"<b>{top['player_name']}</b> converts <b>{top['shot_conversion_pct']:.0f}% of shots</b> into goals -- "
                     f"the most efficient finisher among players with at least 8 shots.")
 
-# ----------------------------------------------------------------------
+
 # PAGE: DEFENSIVE & PHYSICAL
-# ----------------------------------------------------------------------
+
 elif page == "Defensive & Physical":
     st.markdown("## Defensive & Physical Performance")
     st.caption("Who does the unglamorous work -- winning the ball back and covering the ground.")
@@ -393,9 +383,9 @@ elif page == "Defensive & Physical":
         insight(f"<b>{top_runner['position']}s</b> cover the most ground per match on average "
                 f"({top_runner['distance_covered_km']:.1f} km) -- consistent with their box-to-box role connecting defense and attack.")
 
-# ----------------------------------------------------------------------
+
 # PAGE: TEAM COMPARISON
-# ----------------------------------------------------------------------
+
 elif page == "Team Comparison":
     st.markdown("## Team Comparison")
     st.caption("Compare up to 6 national teams side by side on the metrics that matter most.")
@@ -438,9 +428,9 @@ elif page == "Team Comparison":
             st.dataframe(t[show_cols].rename(columns=nice_names).sort_values("Goals", ascending=False),
                          width='stretch', hide_index=True)
 
-# ----------------------------------------------------------------------
+
 # PAGE: HEAD-TO-HEAD PLAYER COMPARISON
-# ----------------------------------------------------------------------
+
 elif page == "Head-to-Head":
     st.markdown("## Head-to-Head Player Comparison")
     st.caption("Pick any two players and compare them across six key metrics -- no stats knowledge required.")
@@ -488,9 +478,9 @@ elif page == "Head-to-Head":
             })
             st.dataframe(table, width='stretch', hide_index=True)
 
-# ----------------------------------------------------------------------
+
 # PAGE: EXPLORE THE DATA
-# ----------------------------------------------------------------------
+
 elif page == "Explore the Data":
     st.markdown("## Explore the Full Dataset")
     st.caption("Every player's tournament summary. Click a column header to sort; use the sidebar filters to narrow it down.")
@@ -506,9 +496,9 @@ elif page == "Explore the Data":
     csv = display_df.to_csv(index=False).encode("utf-8")
     st.download_button("Download this table as CSV", csv, "fifa_2026_player_summary.csv", "text/csv")
 
-# ----------------------------------------------------------------------
+
 # PAGE: ABOUT THIS DATA
-# ----------------------------------------------------------------------
+
 elif page == "About This Data":
     st.markdown("## About This Dashboard")
 
